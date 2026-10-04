@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>מעצב מודעות זמנים</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eeeeee;
+        }
+
+        header {
+            background: #17324d;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            gap: 30px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .form {
+            background: white;
+            padding: 25px;
+            width: 350px;
+            border-radius: 12px;
+        }
+
+        .preview {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #17324d;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        #poster {
+            width: 600px;
+            height: 850px;
+            background: white;
+            box-shadow: 0 5px 20px #0004;
+            padding: 60px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        #poster h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        #dateDisplay {
+            font-size: 25px;
+            margin-bottom: 40px;
+        }
+
+        .time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 25px;
+            padding: 15px;
+            border-bottom: 1px solid #cccccc;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    מעצב מודעות זמנים
+</header>
+
+<div class="container">
+
+    <div class="form">
+
+        <h2>פרטי המודעה</h2>
+
+        <label>כותרת</label>
+        <input id="title" value="זמני היום">
+
+        <label>תאריך</label>
+        <input id="date" value="">
+
+        <label>שם זמן 1</label>
+        <input id="name1" value="זמן ראשון">
+
+        <label>שעה 1</label>
+        <input id="time1" value="08:00">
+
+        <label>שם זמן 2</label>
+        <input id="name2" value="זמן שני">
+
+        <label>שעה 2</label>
+        <input id="time2" value="12:00">
+
+        <label>שם זמן 3</label>
+        <input id="name3" value="זמן שלישי">
+
+        <label>שעה 3</label>
+        <input id="time3" value="18:00">
+
+        <label>שם זמן 4</label>
+        <input id="name4" value="זמן רביעי">
+
+        <label>שעה 4</label>
+        <input id="time4" value="20:00">
+
+        <button onclick="updatePoster()">
+            עדכן מודעה
+        </button>
+
+    </div>
+
+    <div class="preview">
+
+        <div id="poster">
+
+            <h1 id="titleDisplay">זמני היום</h1>
+
+            <div id="dateDisplay">תאריך</div>
+
+            <div class="time">
+                <span id="name1Display">זמן ראשון</span>
+                <strong id="time1Display">08:00</strong>
+            </div>
+
+            <div class="time">
+                <span id="name2Display">זמן שני</span>
+                <strong id="time2Display">12:00</strong>
+            </div>
+
+            <div class="time">
+                <span id="name3Display">זמן שלישי</span>
+                <strong id="time3Display">18:00</strong>
+            </div>
+
+            <div class="time">
+                <span id="name4Display">זמן רביעי</span>
+                <strong id="time4Display">20:00</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function updatePoster() {
+
+    document.getElementById("titleDisplay").innerText =
+        document.getElementById("title").value;
+
+    document.getElementById("dateDisplay").innerText =
+        document.getElementById("date").value;
+
+    for (let i = 1; i <= 4; i++) {
+
+        document.getElementById("name" + i + "Display").innerText =
+            document.getElementById("name" + i).value;
+
+        document.getElementById("time" + i + "Display").innerText =
+            document.getElementById("time" + i).value;
+
+    }
+}
+
+</script>
+
+</body>
+</html>
