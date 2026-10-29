@@ -2,18 +2,24 @@ services:
   - type: web
     name: prayer-ads
     runtime: docker
-    plan: starter            # דיסק קבוע דורש תוכנית בתשלום
+    plan: starter            # תוכנית בתשלום שלא נרדמת (חשוב לקו הטלפוני), בלי דיסק קבוע
     healthCheckPath: /healthz
-    disk:
-      name: data
-      mountPath: /data
-      sizeGB: 1
     envVars:
-      - key: DATA_DIR
-        value: /data
       - key: ADMIN_PASSWORD
         sync: false
       - key: PUBLIC_URL
+        sync: false
+      - key: IVR_TOKEN
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_APP_PASSWORD
+        sync: false
+      - key: RECIPIENTS
+        sync: false
+      - key: ALLOWED_EMAILS
         sync: false
       - key: GOOGLE_CLIENT_ID
         sync: false
