@@ -2,7 +2,7 @@ services:
   - type: web
     name: prayer-ads
     runtime: docker
-    plan: starter            # תוכנית בתשלום שלא נרדמת (חשוב לקו הטלפוני), בלי דיסק קבוע
+    plan: free            # תוכנית בתשלום שלא נרדמת (חשוב לקו הטלפוני), בלי דיסק קבוע
     healthCheckPath: /healthz
     envVars:
       - key: ADMIN_PASSWORD
