@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: prayer-ads
+    runtime: docker
+    plan: free               # בלי תשלום. נרדם אחרי חוסר פעילות, ראה README (שירות ping)
+    healthCheckPath: /healthz
+    envVars:
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: PUBLIC_URL
+        sync: false
+      - key: IVR_TOKEN
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_APP_PASSWORD
+        sync: false
+      - key: RECIPIENTS
+        sync: false
+      - key: ALLOWED_EMAILS
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
