@@ -34,6 +34,23 @@ function defaults() {
   };
 }
 
+// ערכים ממשתני סביבה (לשרת בלי דיסק קבוע). אם הוגדרו, הם גוברים על מה ששמור בקובץ
+const ENV_MAP = {
+  yemotNumber: 'YEMOT_NUMBER', yemotApiKey: 'YEMOT_API_KEY', ivrToken: 'IVR_TOKEN',
+  sessionSecret: 'SESSION_SECRET', gmailUser: 'GMAIL_USER', gmailAppPassword: 'GMAIL_APP_PASSWORD',
+  senderName: 'SENDER_NAME', recipients: 'RECIPIENTS', allowedEmails: 'ALLOWED_EMAILS',
+};
+
+function applyEnv(settings) {
+  for (const [key, envName] of Object.entries(ENV_MAP)) {
+    const v = (process.env[envName] || '').trim();
+    if (v) settings[key] = v;
+  }
+  if (!process.env.IVR_TOKEN) {
+    console.warn('לא הוגדר IVR_TOKEN: בלי דיסק קבוע הכתובת של הקו תתחלף בכל הפעלה מחדש. הגדר אותו במשתני הסביבה.');
+  }
+}
+
 let state = null;
 
 function load() {
@@ -53,6 +70,7 @@ function load() {
   } else {
     state = base;
   }
+  applyEnv(state.settings);
   save();
   return state;
 }

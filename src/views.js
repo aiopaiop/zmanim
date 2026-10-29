@@ -109,6 +109,8 @@ document.addEventListener('input',preview); fill();
 function settingsPage(s, origin, g = {}) {
   const ini = `type=api\napi_link=${origin}/ivr/${s.ivrToken}\napi_url_post=no\napi_wait_answer_music_on_hold=yes\napi_log=yes`;
   return layout('הגדרות', `
+<div class="card" style="background:#fff8e6"><h2>שים לב</h2>
+<p class="hint" style="margin:0">השרת פועל בלי דיסק קבוע: ערכים ששמורים בעמוד הזה יאבדו בהפעלה מחדש של השרת. כדי שההגדרות יישארו, הגדר אותן גם במשתני הסביבה ב-Render (שמותיהם ב-README). זמני התפילות והפרשה יתאפסו בהפעלה מחדש.</p></div>
 <div class="card"><h2>קו ימות המשיח</h2>
 <label for="yn">מספר הקו / המערכת</label><input type="text" id="yn" data-f="yemotNumber" value="${esc(s.yemotNumber)}" inputmode="numeric" autocomplete="off">
 <label for="yk">מפתח API (סיסמת המערכת)</label><input type="password" id="yk" data-f="yemotApiKey" placeholder="${s.yemotApiKeySet ? 'שמור. השאר ריק כדי לא לשנות' : ''}" autocomplete="new-password">
